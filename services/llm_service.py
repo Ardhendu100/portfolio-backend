@@ -48,7 +48,7 @@ async def stream_llm_answer(prompt: str, model: str = "llama-3.1-8b-instant"):
                             data = json.loads(json_str)
                             content = data.get("choices", [{}])[0].get("delta", {}).get("content", "")
                             if content:
-                                print(f"Streaming chunk: {repr(content)}")
+                                # print(f"Streaming chunk: {repr(content)}")
                                 yield content   #sends the chunk to FastAPI, which streams it to the frontend.
                         except json.JSONDecodeError as e:
                             print(f"JSON decode error: {e}, line: {line}")
